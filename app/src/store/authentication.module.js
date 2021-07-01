@@ -1,4 +1,5 @@
-import router from '../router'
+import { authenService } from '../services'
+import router from '../router';
 
 export const authentication = {
   namespaced: true,
@@ -45,7 +46,7 @@ export const authentication = {
     //     commit('signout');
     //   }
     },
-    signin({ dispatch, commit }, { authen, password }) {
+    async signin({ dispatch, commit }, { authen, password }) {
       // authenService.signin(authen, password)
       //   .then(res => {
       //     if(res.response_status=='Success'){
@@ -63,6 +64,10 @@ export const authentication = {
       //     commit('signinFailed');
       //     commit('updateAlert', { type: 'Danger', message: 'System error.' });
       //   });
+
+      await authenService.signin().then( res => {
+        console.log('res', res);
+      })
     },
     signout({ dispatch, commit }) {
       commit('signout');

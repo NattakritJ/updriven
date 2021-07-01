@@ -83,6 +83,8 @@
 import Button from '../../components/Button';
 import FormGroup from '../../components/FormGroup';
 import CheckBoxSmall from '../../components/CheckBoxSmall';
+import {mapGetters, mapActions, mapState} from "vuex"
+import { authenService } from '../../services'
 
 export default {
   name: 'AuthSignInPage',
@@ -93,6 +95,9 @@ export default {
   },
   created() {
     AOS.init({ easing: 'ease-in-out-cubic', duration: 750, once: true, offset: 10 });
-  }
+
+    authenService.signin();
+  },
+
 }
 </script>
