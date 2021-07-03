@@ -65,8 +65,11 @@ export const authentication = {
       //     commit('updateAlert', { type: 'Danger', message: 'System error.' });
       //   });
 
-      await authenService.signin().then( res => {
+      await authenService.signin( authen, password ).then( res => {
+        localStorage.setItem('user_info', JSON.stringify(res))
         console.log('res', res);
+      }).catch( err => {
+        return Promise.reject(err)
       })
     },
     signout({ dispatch, commit }) {

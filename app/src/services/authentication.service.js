@@ -6,15 +6,16 @@ export const authenService = {
     signin
 }
 
-function signin() {
-    setCookieBeforeAuth();
+function signin(authen, password) {
+    setCookieBeforeAuth(); 
+
     return new Promise((resolve, reject) => {
         axios({
           method: 'POST',
           url: `auth/login`,
           data: {
-            username: 'hehe@he.hea',
-            password: 'tata'
+            username: authen,
+            password: password
           },
           withCredentials: true,
         })
